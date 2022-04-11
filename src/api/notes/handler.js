@@ -1,9 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 const ClientError = require('../../exceptions/ClientError');
 
 class NotesHandler {
   constructor(service, validator) {
     this._service = service;
-
     this._validator = validator;
 
     this.postNoteHandler = this.postNoteHandler.bind(this);
@@ -94,7 +94,6 @@ class NotesHandler {
   putNoteByIdHandler(request, h) {
     try {
       this._validator.validateNotePayload(request.payload);
-
       const { id } = request.params;
 
       this._service.editNoteById(id, request.payload);
@@ -128,6 +127,7 @@ class NotesHandler {
     try {
       const { id } = request.params;
       this._service.deleteNoteById(id);
+
       return {
         status: 'success',
         message: 'Catatan berhasil dihapus',
