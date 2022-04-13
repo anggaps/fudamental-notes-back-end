@@ -32,7 +32,7 @@ class NotesHandler {
     } catch (error) {
       if (error instanceof ClientError) {
         const response = h.response({
-          status: 'fail',
+          status: 'error',
           message: error.message,
         });
         response.code(error.statusCode);
